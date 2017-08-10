@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.etna.myguide.MenuActivity">
+
+    <item android:id="@+id/nav_account"
+        android:icon="@mipmap/ic_person_black_24dp"
+        android:title="Mon compte"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+
+    <item android:id="@+id/nav_gestion"
+        android:icon="@mipmap/ic_perm_identity_black_24dp"
+        android:title="Gestion guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <item android:id="@+id/nav_recherche"
+        android:icon="@mipmap/ic_person_pin_circle_black_24dp"
+        android:title="Recherche guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <item android:id="@+id/nav_settings"
+        android:icon="@mipmap/ic_settings_black_24dp"
+        android:title="Paramètres"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <item android:id="@+id/nav_premium"
+        android:icon="@mipmap/ic_card_membership_black_24dp"
+        android:title="Compte Premium"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <item android:id="@+id/nav_info"
+        android:icon="@mipmap/ic_help_black_24dp"
+        android:title="Informations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <item android:id="@+id/nav_logout"
+        android:icon="@mipmap/logout"
+        android:title="Log Out"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1" />
+
+</menu>
