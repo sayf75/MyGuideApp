@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,8 +21,9 @@
         <activity android:name=".ConnexionActivity" />
         <activity android:name=".InscriptionActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".MenuActivity"/>
-        <activity android:name=".PaymentActivity"/>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".PaymentActivity" />
+        <activity android:name=".SelectedActivity"></activity>
     </application>
 
 </manifest>

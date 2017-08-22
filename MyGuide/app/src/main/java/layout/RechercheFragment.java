@@ -3,23 +3,19 @@ package layout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.etna.myguide.ConnexionActivity;
 import com.etna.myguide.R;
+import com.etna.myguide.SelectedActivity;
 import com.etna.myguide.main;
-import com.huxq17.swipecardsview.SwipeCardsView;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -28,22 +24,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RechercheFragment extends Fragment {
-
-    private static String nom;
-    private static String prenom;
-    private static String email;
-    private static String pays;
-    private static String ville;
-    private static String adresse;
-    private static String postal;
 
     private ListView v;
     private ArrayAdapter<String> adapter;
@@ -92,32 +77,77 @@ public class RechercheFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-
         final View view = inflater.inflate(R.layout.fragment_recherche, container, false);
         v = (ListView) view.findViewById(R.id.list);
         Call<List<Users>> call = apiWrapping.apiService.getGuide();
         call.enqueue(new Callback<List<Users>>() {
             @Override
-            public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
+            public void onResponse(Call<List<Users>> call, final Response<List<Users>> response) {
                 List<String> items = new ArrayList<String>();
                 if (response.isSuccessful()) {
-                    List<Users> user = response.body();
-
+                    final List<Users> user = response.body();
                     if (user.size() > 0) {
                        for (int i = 0; i != user.size(); i++) {
                            if (user.get(i).disponibilite == 1) {
                                items.add(user.get(i).prenom + " " + user.get(i).nom);
                            }
-
                        }
                     }
                     adapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_list_item_1, items);
                     v.setAdapter(adapter);
+                    v.setClickable(true);
+                    v.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            if  (position == 0) {
+
+
+
+                                    Toast.makeText(getActivity(), "Selection guide", Toast.LENGTH_SHORT).show();
+
+
+                                    Intent intent = new Intent(getContext(), SelectedActivity.class);
+                                    intent.putExtra("nom", user.get(position).nom);
+                                    intent.putExtra("prenom", user.get(position).prenom);
+                                    intent.putExtra("adresse", user.get(position).adresse);
+                                    intent.putExtra("ville", user.get(position).ville);
+                                    intent.putExtra("postal", user.get(position).postal);
+                                    startActivity(intent);
+                                }
+                                else {
+                                Toast.makeText(getActivity(), "Selection     guide", Toast.LENGTH_SHORT).show();
+                                Intent intent2 = new Intent(getContext(), SelectedActivity.class);
+                                intent2.putExtra("nom", user.get(position).nom);
+                                intent2.putExtra("prenom", user.get(position).prenom);
+                                intent2.putExtra("adresse", user.get(position).adresse);
+                                intent2.putExtra("ville", user.get(position).ville);
+                                intent2.putExtra("postal", user.get(position).postal);
+                                startActivity(intent2);
+
+                                /*    break;
+                                case 1:
+
+                                    break;
+                                case 2:
+
+                                    Toast.makeText(getActivity(), "deuxieme guide", Toast.LENGTH_SHORT).show();
+                                    Intent intent3 = new Intent(getContext(), SelectedActivity.class);
+                                    intent3.putExtra("nom", user.get(position).nom);
+                                    intent3.putExtra("prenom", user.get(position).prenom);
+                                    intent3.putExtra("adresse", user.get(position).adresse);
+                                    intent3.putExtra("ville", user.get(position).ville);
+                                    intent3.putExtra("postal", user.get(position).postal);
+                                    startActivity(intent3);
+                                    break;*/
+                            }
+                        }
+                    });
                 }
             }
 
@@ -128,7 +158,5 @@ public class RechercheFragment extends Fragment {
         });
         return view;
     }
-
-
 
 }
