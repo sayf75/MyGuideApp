@@ -8,52 +8,32 @@
 
     <item android:id="@+id/nav_account"
         android:icon="@mipmap/ic_person_black_24dp"
-        android:title="Mon compte"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:title="Mon compte" />
+
 
     <item android:id="@+id/nav_gestion"
         android:icon="@mipmap/ic_perm_identity_black_24dp"
-        android:title="Gestion guide"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:title="Gestion guide" />
 
     <item android:id="@+id/nav_recherche"
         android:icon="@mipmap/ic_person_pin_circle_black_24dp"
-        android:title="Recherche guide"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:title="Recherche guide" />
 
     <item android:id="@+id/nav_settings"
         android:icon="@mipmap/ic_settings_black_24dp"
-        android:title="Paramètres"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:title="Paramètres" />
 
 
     <item android:id="@+id/nav_premium"
         android:icon="@mipmap/ic_card_membership_black_24dp"
-        android:title="Compte Premium"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:title="Compte Premium" />
 
     <item android:id="@+id/nav_info"
         android:icon="@mipmap/ic_help_black_24dp"
-        android:title="Informations"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:title="Informations" />
 
     <item android:id="@+id/nav_logout"
         android:icon="@mipmap/logout"
-        android:title="Log Out"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1" />
+        android:title="Log Out" />
 
 </menu>

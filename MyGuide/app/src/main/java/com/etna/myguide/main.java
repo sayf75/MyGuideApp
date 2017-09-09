@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class main extends AppCompatActivity {
 
-    private static final String API_URL = "https://friendlyknowing.herokuapp.com";
+    private static final String API_URL = "https://myguideapi.herokuapp.com/";
     public static int splash_screen_time = 3000;
 
     public static String getAPI_URL()

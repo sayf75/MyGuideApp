@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="com.etna.myguide.ConnexionActivity"
-    android:background="@drawable/connecback">
+    android:background="@drawable/connexionp">
+
 
     <EditText
         android:id="@+id/editText"
@@ -14,10 +15,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="73dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="270dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Username" />
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/editText2"
@@ -34,31 +35,35 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Connexion via Google"
+        android:layout_marginTop="30dp"
+        android:background="#509A4A"
+        android:textColor="@android:color/white"
+        android:text="Connexion"
+        android:textSize="20dp"
         android:layout_below="@+id/editText2"
         android:layout_alignStart="@+id/editText2"
         android:layout_alignEnd="@+id/editText2" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textSignUp"
+        android:layout_width="140dp"
+        android:layout_marginLeft="55dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_marginTop="22dp"
-        android:text="Connexion via Facebook"
-        android:layout_alignStart="@+id/button"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_alignEnd="@+id/button" />
+        android:layout_marginTop="20dp"
+        android:text="Pas encore inscrit ?"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Inscription"
-        android:layout_below="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignEnd="@+id/button2" />
+        android:background="@android:color/transparent"
+        android:text="Inscrivez-vous"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/button"
+        android:layout_toRightOf="@+id/textSignUp"
+        android:layout_alignParentRight="true"/>
+
 </RelativeLayout>

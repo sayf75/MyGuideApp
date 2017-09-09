@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,14 +29,6 @@ import retrofit2.http.Path;
  * A simple {@link Fragment} subclass.
  */
 public class ProfilFragment extends Fragment {
-
-    private static String nom;
-    private static String prenom;
-    private static String email;
-    private static String pays;
-    private static String ville;
-    private static String adresse;
-    private static String postal;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -52,18 +46,6 @@ public class ProfilFragment extends Fragment {
             Call<userInfo> getUserData(
                     @Path("id") String id
             );
-
-            @PUT("/users/{id}/{nom}/{prenom}/{email}/{pays}/{ville}/{adresse}/{postal}")
-            Call<userInfo> setUserData(
-                    @Path("id") String id,
-                    @Path("nom") String nom,
-                    @Path("prenom") String prenom,
-                    @Path("email") String email,
-                    @Path("pays") String pays,
-                    @Path("ville") String ville,
-                    @Path("adresse") String adresse,
-                    @Path("postal") String postal
-            );
         }
     }
 
@@ -71,40 +53,41 @@ public class ProfilFragment extends Fragment {
         public final String type;
         public final String nom;
         public final String prenom;
-        public final String username;
-        public final String password;
-        public final String email;
         public final String pays;
         public final String ville;
-        public final String adresse;
-        public final String postal;
+        public final String langue;
+        public final String description;
+        public final String photo;
+        public final String date_naissance;
+        public final String bourse;
 
-        public userInfo(String _type, String _nom, String _prenom, String _username, String _password, String _email,
-                        String _pays, String _ville, String _adresse, String _postal) {
+        public userInfo(String _type, String _nom, String _prenom, String _langue, String _description,
+                        String _photo, String _date_naissance, String _bourse, String _pays, String _ville) {
             this.type = _type;
             this.nom = _nom;
             this.prenom = _prenom;
-            this.username = _username;
-            this.password = _password;
-            this.email = _email;
+            this.langue = _langue;
+            this.description = _description;
+            this.photo = _photo;
             this.pays = _pays;
             this.ville = _ville;
-            this.adresse = _adresse;
-            this.postal = _postal;
+            this.date_naissance = _date_naissance;
+            this.bourse = _bourse;
         }
     }
 
     public void getProfileData(View view, String id)
     {
-        final TextView username = (TextView)view.findViewById(R.id.username);
         final TextView type = (TextView)view.findViewById(R.id.type);
-        final EditText nom = (EditText)view.findViewById(R.id.nom);
-        final EditText prenom = (EditText)view.findViewById(R.id.prenom);
-        final EditText email = (EditText)view.findViewById(R.id.email);
-        final EditText pays = (EditText)view.findViewById(R.id.pays);
-        final EditText ville = (EditText)view.findViewById(R.id.ville);
-        final EditText adresse = (EditText)view.findViewById(R.id.adresse);
-        final EditText postal = (EditText)view.findViewById(R.id.postal);
+        final TextView nom = (TextView)view.findViewById(R.id.nom);
+        final TextView prenom = (TextView)view.findViewById(R.id.prenom);
+        final TextView pays = (TextView)view.findViewById(R.id.pays);
+        final TextView ville = (TextView)view.findViewById(R.id.ville);
+        final TextView langue = (TextView)view.findViewById(R.id.langue);
+        final TextView age = (TextView)view.findViewById(R.id.age);
+        final TextView bourse = (TextView)view.findViewById(R.id.bourse);
+        final ImageView photo = (ImageView) view.findViewById(R.id.photo);
+        final TextView description = (TextView)view.findViewById(R.id.description);
 
         Call<userInfo> call = apiWrapping.apiService.getUserData(id);
         call.enqueue(new Callback<userInfo>() {
@@ -112,59 +95,21 @@ public class ProfilFragment extends Fragment {
             public void onResponse(Call<userInfo> call, Response<userInfo> response) {
                 if (response.isSuccessful()) {
                     userInfo user = response.body();
-                    username.setText(user.username);
+                    langue.setText(user.langue);
                     type.setText(user.type);
-                    nom.setText(user.nom, TextView.BufferType.EDITABLE);
-                    prenom.setText(user.prenom, TextView.BufferType.EDITABLE);
-                    email.setText(user.email, TextView.BufferType.EDITABLE);
-                    pays.setText(user.pays, TextView.BufferType.EDITABLE);
-                    ville.setText(user.ville, TextView.BufferType.EDITABLE);
-                    adresse.setText(user.adresse, TextView.BufferType.EDITABLE);
-                    postal.setText(user.postal, TextView.BufferType.EDITABLE);
-                    ProfilFragment.nom = user.nom;
-                    ProfilFragment.prenom = user.prenom;
-                    ProfilFragment.email = user.email;
-                    ProfilFragment.pays = user.pays;
-                    ProfilFragment.ville = user.ville;
-                    ProfilFragment.adresse = user.adresse;
-                    ProfilFragment.postal = user.postal;
+                    nom.setText(user.nom);
+                    prenom.setText(user.prenom);
+                    age.setText(user.date_naissance);
+                    pays.setText(user.pays);
+                    ville.setText(user.ville);
+                    bourse.setText(user.bourse);
+                    description.setText(user.description);
+                    // photo imageview
                 }
             }
             @Override
             public void onFailure(Call<userInfo> call, Throwable t) {}
         });
-    }
-
-    public void setProfileData(View view, String id)
-    {
-        final EditText nom = (EditText)view.findViewById(R.id.nom);
-        final EditText prenom = (EditText)view.findViewById(R.id.prenom);
-        final EditText email = (EditText)view.findViewById(R.id.email);
-        final EditText pays = (EditText)view.findViewById(R.id.pays);
-        final EditText ville = (EditText)view.findViewById(R.id.ville);
-        final EditText adresse = (EditText)view.findViewById(R.id.adresse);
-        final EditText postal = (EditText)view.findViewById(R.id.postal);
-
-        /*if ("".equals(nom.getText().toString()) || "".equals(prenom.getText().toString())
-                || "".equals(password.getText().toString()) || "".equals(email.getText().toString())
-                || )
-            Toast.makeText(this.getContext(), "Manque un parametre", Toast.LENGTH_SHORT).show();
-        else {*/
-            Call<userInfo> call = apiWrapping.apiService.setUserData(id,
-                    "".equals(nom.getText().toString()) ? ProfilFragment.nom : nom.getText().toString(),
-                    "".equals(prenom.getText().toString()) ? ProfilFragment.prenom : prenom.getText().toString(),
-                    "".equals(email.getText().toString()) ? ProfilFragment.email : email.getText().toString(),
-                    "".equals(pays.getText().toString()) ? ProfilFragment.pays : pays.getText().toString(),
-                    "".equals(ville.getText().toString()) ? ProfilFragment.ville : ville.getText().toString(),
-                    "".equals(adresse.getText().toString()) ? ProfilFragment.adresse : adresse.getText().toString(),
-                    "".equals(postal.getText().toString()) ? ProfilFragment.postal : postal.getText().toString());
-            call.enqueue(new Callback<userInfo>() {
-                @Override
-                public void onResponse(Call<userInfo> call, Response<userInfo> response) {}
-                @Override
-                public void onFailure(Call<userInfo> call, Throwable t) {}
-            });
-        //}
     }
 
     @Override
@@ -174,13 +119,18 @@ public class ProfilFragment extends Fragment {
 
         final String id = this.getArguments().getString("id");
         getProfileData(view, id);
-        Button modButton = (Button) view.findViewById(R.id.modify);
-        modButton.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setProfileData(view ,id);
-            }
-        });
+        Button editButton = (Button) view.findViewById(R.id.edit);
+
+        String[] locales = Locale.getISOCountries();
+
+        for (String countryCode : locales) {
+
+            Locale obj = new Locale("", countryCode);
+
+            Log.d("", "Country Name = " + obj.getDisplayCountry());
+
+        }
+
         return view;
     }
 

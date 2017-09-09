@@ -1,50 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.etna.myguide.InscriptionActivity"
-    android:background="@drawable/inscriptback">
+    android:background="@drawable/inscriptp">
 
-    <EditText
-        android:id="@+id/editText3"
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+
+        <EditText
+        android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="200dp"
+        android:hint="Nom"
+        android:ems="10"/>
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Prénom"
+            android:ems="10"/>
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="MM/JJ/AAAA"
+            android:textSize="16dp"/>
+
+        <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Username" />
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Email"/>
 
     <EditText
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText3"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="23dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"/>
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:layout_below="@+id/editText4"
-        android:layout_alignStart="@+id/editText4"
-        android:hint="Email"/>
+        android:layout_marginTop="10dp"
+        android:hint="Password"
+        android:layout_below="@+id/editText5"
+        android:layout_alignStart="@+id/editText5" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"
-        android:text="Validez" />
-</RelativeLayout>
+        android:layout_below="@+id/editText4"
+        android:background="#1ABC9C"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="30dp"
+        android:text="Validez"
+        android:textSize="20dp"
+        android:layout_alignEnd="@+id/editText4"
+        android:layout_alignStart="@+id/editText4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="*Des informations supplémentaires seront nécessaires dans votre profil pour l'application."
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/button4"/>
+
+    </TableLayout>
+</ScrollView>

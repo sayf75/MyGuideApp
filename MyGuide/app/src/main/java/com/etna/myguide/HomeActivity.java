@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -78,11 +77,13 @@ public class HomeActivity extends AppCompatActivity {
         FT.add(R.id.main_container, new RechercheFragment());
         FT.commit();
 
-        final Switch dispo = (Switch) findViewById(R.id.dispo);
+        final Switch dispo = (Switch)findViewById(R.id.dispo);
+
         if (type.equals("client")) {
             getSupportActionBar().setTitle("Recherche");
             dispo.setVisibility(View.GONE);
-        } else {
+        }
+        else {
             getSupportActionBar().setTitle("Disponibilité");
             Call<Dispo> call = apiWrapping.apiService.getDispo(id);
             call.enqueue(new Callback<Dispo>() {
@@ -96,20 +97,18 @@ public class HomeActivity extends AppCompatActivity {
                             dispo.setChecked(false);
                     }
                 }
-
                 @Override
-                public void onFailure(Call<Dispo> call, Throwable throwable) {
-                }
+                public void onFailure(Call<Dispo> call, Throwable throwable) {}
             });
         }
-        Naviews = (NavigationView) findViewById(R.id.navigation_view);
+        Naviews = (NavigationView)findViewById(R.id.navigation_view);
         Naviews.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
+                switch (item.getItemId()){
                     case R.id.nav_account:
                         Bundle bundle = new Bundle();
-                        bundle.putString("id", id);
+                        bundle.putString("id", id );
                         ProfilFragment fragInfo = new ProfilFragment();
                         fragInfo.setArguments(bundle);
                         FT = getSupportFragmentManager().beginTransaction();
@@ -121,7 +120,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_settings:
                         FT = getSupportFragmentManager().beginTransaction();
-                        FT.replace(R.id.main_container, new ParametreFragment());
+                        FT.replace(R.id.main_container,new ParametreFragment());
                         FT.commit();
                         getSupportActionBar().setTitle("Paramètres");
                         item.setChecked(true);
@@ -129,33 +128,32 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_recherche:
                         FT = getSupportFragmentManager().beginTransaction();
-                        FT.replace(R.id.main_container, new RechercheFragment());
+                        FT.replace(R.id.main_container,new RechercheFragment());
                         FT.commit();
                         getSupportActionBar().setTitle("Guide");
                         item.setChecked(true);
                         DrawerL.closeDrawers();
                         break;
                 }
+
                 return true;
             }
         });
 
         dispo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                if(isChecked) {
                     Call<Dispo> call = apiWrapping.apiService.putDispo(id, 1);
                     call.enqueue(new Callback<Dispo>() {
                         @Override
                         public void onResponse(Call<Dispo> call, Response<Dispo> response) {
                             if (response.isSuccessful())
-                                Toast.makeText(HomeActivity.this, "Vous êtes disponible pour guider.",
-                                        Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "Vous êtes disponible pour guider.",
+                                    Toast.LENGTH_SHORT).show();
                         }
-
                         @Override
-                        public void onFailure(Call<Dispo> call, Throwable throwable) {
-                        }
+                        public void onFailure(Call<Dispo> call, Throwable throwable) {}
                     });
                 } else {
                     Call<Dispo> call = apiWrapping.apiService.putDispo(id, 0);
@@ -164,12 +162,10 @@ public class HomeActivity extends AppCompatActivity {
                         public void onResponse(Call<Dispo> call, Response<Dispo> response) {
                             if (response.isSuccessful())
                                 Toast.makeText(HomeActivity.this, "Vous n'êtes plus disponible pour guider.",
-                                        Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_SHORT).show();
                         }
-
                         @Override
-                        public void onFailure(Call<Dispo> call, Throwable throwable) {
-                        }
+                        public void onFailure(Call<Dispo> call, Throwable throwable) {}
                     });
                 }
             }

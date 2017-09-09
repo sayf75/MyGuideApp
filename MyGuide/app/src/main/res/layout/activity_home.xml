@@ -10,8 +10,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id = "@+id/main_container" >
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_container">
 
             <Switch
                 android:id="@+id/dispo"
@@ -19,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:text="Disponibilité ?" />
 
+        </FrameLayout>
 
     </LinearLayout>
 

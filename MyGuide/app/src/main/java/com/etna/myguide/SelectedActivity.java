@@ -1,7 +1,7 @@
 package com.etna.myguide;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,18 +13,19 @@ public class SelectedActivity extends AppCompatActivity {
         String name = getIntent().getStringExtra("nom");
         String fname = getIntent().getStringExtra("prenom");
         String town = getIntent().getStringExtra("ville");
-        String adress = getIntent().getStringExtra("adresse");
-        String post = getIntent().getStringExtra("postal");
+        String description8 = getIntent().getStringExtra("description");
+        String prix_prestation = getIntent().getStringExtra("prix_prestation");
+        Toast.makeText(getApplicationContext() , name, Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_selected);
         TextView nom = (TextView) findViewById(R.id.nom);
         TextView prenom = (TextView) findViewById(R.id.prenom);
         TextView ville = (TextView) findViewById(R.id.ville);
-        TextView adresse = (TextView) findViewById(R.id.adresse);
-        TextView postal = (TextView) findViewById(R.id.postal);
+        TextView description = (TextView) findViewById(R.id.description);
+        TextView presta = (TextView) findViewById(R.id.prix_prestation);
         nom.setText(name);
         prenom.setText(fname);
         ville.setText(town);
-        adresse.setText(adress);
-        postal.setText(post);
+        description.setText(description8);
+        presta.setText(prix_prestation);
     }
 }
