@@ -106,12 +106,6 @@ public class RechercheFragment extends Fragment {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             if  (position == 0) {
-
-
-
-                                    Toast.makeText(getActivity(), "Selection guide", Toast.LENGTH_SHORT).show();
-
-
                                     Intent intent = new Intent(getContext(), SelectedActivity.class);
                                     intent.putExtra("nom", user.get(position).nom);
                                     intent.putExtra("prenom", user.get(position).prenom);
@@ -121,7 +115,6 @@ public class RechercheFragment extends Fragment {
                                     startActivity(intent);
                                 }
                                 else {
-                                Toast.makeText(getActivity(), "Selection     guide", Toast.LENGTH_SHORT).show();
                                 Intent intent2 = new Intent(getContext(), SelectedActivity.class);
                                 intent2.putExtra("nom", user.get(position).nom);
                                 intent2.putExtra("prenom", user.get(position).prenom);
@@ -129,22 +122,6 @@ public class RechercheFragment extends Fragment {
                                 intent2.putExtra("ville", user.get(position).ville);
                                 intent2.putExtra("postal", user.get(position).postal);
                                 startActivity(intent2);
-
-                                /*    break;
-                                case 1:
-
-                                    break;
-                                case 2:
-
-                                    Toast.makeText(getActivity(), "deuxieme guide", Toast.LENGTH_SHORT).show();
-                                    Intent intent3 = new Intent(getContext(), SelectedActivity.class);
-                                    intent3.putExtra("nom", user.get(position).nom);
-                                    intent3.putExtra("prenom", user.get(position).prenom);
-                                    intent3.putExtra("adresse", user.get(position).adresse);
-                                    intent3.putExtra("ville", user.get(position).ville);
-                                    intent3.putExtra("postal", user.get(position).postal);
-                                    startActivity(intent3);
-                                    break;*/
                             }
                         }
                     });

@@ -17,6 +17,7 @@
             android:id="@+id/selectableRoundedImageView"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             android:src="@drawable/photo"
@@ -30,7 +31,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
 
         <TextView
             android:id="@+id/prenom"
@@ -38,28 +40,62 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+
         <TextView
             android:id="@+id/ville"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+
         <TextView
             android:id="@+id/adresse"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+
         <TextView
             android:id="@+id/postal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="120dp"
+        android:layout_gravity="center|bottom"
+        android:text="Description"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:layout_gravity="center|bottom"
+        />
+    <Button
+        android:id="@+id/button3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="12dp"
+        android:text="Selectionner ce guide" />
 
 </RelativeLayout>

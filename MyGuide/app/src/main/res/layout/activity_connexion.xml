@@ -7,7 +7,6 @@
     tools:context="com.etna.myguide.ConnexionActivity"
     android:background="@drawable/connecback">
 
-
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"

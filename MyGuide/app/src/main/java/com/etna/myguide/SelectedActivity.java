@@ -15,7 +15,6 @@ public class SelectedActivity extends AppCompatActivity {
         String town = getIntent().getStringExtra("ville");
         String adress = getIntent().getStringExtra("adresse");
         String post = getIntent().getStringExtra("postal");
-        Toast.makeText(getApplicationContext() , name, Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_selected);
         TextView nom = (TextView) findViewById(R.id.nom);
         TextView prenom = (TextView) findViewById(R.id.prenom);

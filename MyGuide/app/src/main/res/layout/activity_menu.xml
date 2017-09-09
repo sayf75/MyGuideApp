@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
-
     <item android:id="@+id/nav_gestion"
         android:icon="@mipmap/ic_perm_identity_black_24dp"
         android:title="Gestion guide"
